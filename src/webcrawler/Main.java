@@ -12,12 +12,12 @@ import gui.App;
 public class Main {
 	public static void main(String[] args) {
 		if (args.length > 0 && args[0].equals("-X")) {
-			// Desktop app
+			// Launch the desktop app
 			App app = new App();
 			app.launch();
 		}
 		else {
-			// CLI
+			// Run the CLI
 			WebCrawler crawler = new WebCrawler();
 			crawler.runCLI();
 		}
