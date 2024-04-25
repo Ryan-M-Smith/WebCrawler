@@ -151,6 +151,26 @@ public class WebCrawler {
 		return urlsToVisit;
 	}
 
+	public void showResults() {
+		System.out.println("Results");
+		System.out.println("------------------------------------------------------------");
+
+		System.out.println("\nEmails Found:");
+		for (String email: emails) {
+			System.out.printf("\t%s\n", email);
+		}
+
+		System.out.println("\nURLs Visited:");
+		for (URL url: urlsVisited) {
+			System.out.printf("\t%s\n", url);
+		}
+
+		System.out.println("\nURLs Left to Visit:");
+		for (URL url: urlsToVisit) {
+			System.out.printf("\t%s\n", url);
+		}
+	}
+
 	/**
 	 * Launch the web crawler's command-line interface
 	 * 
@@ -164,6 +184,7 @@ public class WebCrawler {
 		boolean crawlNext;
 
 		do {
+			SysControl.clearConsole();
 			System.out.println("\nCrawling...");
 
 			int[] results = crawlNext();
@@ -178,9 +199,10 @@ public class WebCrawler {
 			// Prompt the user to continue
 			System.out.print("Would you like to crawl the next URL (y/n)? ");
 			crawlNext = scanner.next().toLowerCase().equals("y");
-
-			SysControl.clearConsole();
 		} while (crawlNext);
+
+		SysControl.clearConsole();
+		showResults();
 
 		scanner.close();
 	}
