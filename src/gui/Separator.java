@@ -12,8 +12,6 @@ import javax.swing.JSeparator;
 
 /**
  * A {@code JSeparator} of arbitary size and orientation
- * 
- * @author Ryan Smith
  */
 public class Separator extends JSeparator {
 	public static enum Orientation {HORIZONTAL, VERTICAL};
@@ -34,6 +32,9 @@ public class Separator extends JSeparator {
 		}
 	}
 
+	/**
+	 * Get the orientation of the separator
+	 */
 	@Override
 	public int getOrientation() {
 		return orientation.ordinal();

@@ -25,8 +25,6 @@ import javax.swing.BoxLayout;
  * @see JPanel
  * @see JTextField
  * @see JButton
- * 
- * @author Ryan Smith
  */
 public class TextInputField extends JPanel {
 	private JTextField 	textField;
@@ -39,8 +37,6 @@ public class TextInputField extends JPanel {
 	 * @param 	height 			The height of the text field
 	 * @param 	defaultText 	The input component's default text 
 	 * @param 	buttonText 		The button's default text
-	 * 
-	 * @author 					Ryan Smith
 	 */
 	public TextInputField(int width, int height, String defaultText, String buttonText) {
 		textField = new JTextField(defaultText);
@@ -57,8 +53,6 @@ public class TextInputField extends JPanel {
 	 * Define the "submit" button's functionality
 	 * 
 	 * @param 	action 	A function to call when the button is clicked
-	 * 
-	 * @author 			Ryan Smith
 	 */
 	public void onClick(ActionListener action) {
 		button.addActionListener(action);
@@ -68,21 +62,34 @@ public class TextInputField extends JPanel {
 	 * Get the input text
 	 * 
 	 * @return The input text
-	 * 
-	 * @author Ryan Smith
 	 */
 	public String getText() {
 		return textField.getText();
 	}
 
+	/**
+	 * Get the text field
+	 * 
+	 * @return The text field
+	 */
 	public JTextField getTextField() {
 		return textField;
 	}
 
+	/**
+	 * Get the input field's "submit" button
+	 * 
+	 * @return The button
+	 */
 	public JButton getButton() {
 		return button;
 	}
 
+	/**
+	 * Enable or disable the "submit" button
+	 * 
+	 * @param 	enabled 	The button's new state
+	 */
 	public void setButtonEnabled(boolean enabled) {
 		button.setEnabled(enabled);
 	}

@@ -41,8 +41,6 @@ public class ListDisplay<T> extends JScrollPane {
 	 * @param 	width 		The width of the display
 	 * @param 	height 		The height of the display
 	 * @param 	headerText 	The display's header text
-	 * 
-	 * @author 				Ryan Smith
 	 */
 	public ListDisplay(int width, int height, String headerText) {
 		list = new JTable(model);
@@ -56,8 +54,6 @@ public class ListDisplay<T> extends JScrollPane {
 	 * Add a new item to the end of the {@code ListDisplay}
 	 * 
 	 * @param 	item 	The item to add to the list
-	 * 
-	 * @author 			Ryan Smith
 	 */
 	public void addItem(T item) {
 		model.addRow(new Object[] {item});
@@ -68,9 +64,7 @@ public class ListDisplay<T> extends JScrollPane {
 	 * 
 	 * @param 	index 						The index of the row to remove
 	 * 
-	 * @throws 	IndexOutOfBoundsException	If {@code index} is invalid
-	 * 
-	 * @author 								Ryan Smith		
+	 * @throws 	IndexOutOfBoundsException	If {@code index} is invalid	
 	 */
 	public void removeItem(int index) {
 		model.removeRow(index);
@@ -78,8 +72,6 @@ public class ListDisplay<T> extends JScrollPane {
 
 	/**
 	 * Clear the {@code ListDisplay}
-	 * 
-	 * @author Ryan Smith
 	 */
 	public void clear() {
 		model.setRowCount(0);
@@ -89,8 +81,6 @@ public class ListDisplay<T> extends JScrollPane {
 	 * Display the contents of a collection in the {@code ListDisplay}
 	 * 
 	 * @param 	collection 	The collection to display
-	 * 
-	 * @author 				Ryan Smith
 	 */
 	public void display(Collection<T> collection) {
 		Iterator<T> iter = collection.iterator();
@@ -117,8 +107,6 @@ public class ListDisplay<T> extends JScrollPane {
 	 * Get the number of rows in the list
 	 * 
 	 * @return The number of rows in the list
-	 * 
-	 * @author Ryan Smith
 	 */
 	public int getRowCount() {
 		return model.getRowCount();
@@ -128,8 +116,6 @@ public class ListDisplay<T> extends JScrollPane {
 	 * Get the number of columns in the list
 	 * 
 	 * @return The number of columns in the list
-	 * 
-	 * @author Ryan Smith
 	 */
 	public int getColumnCount() {
 		return model.getColumnCount();
