@@ -119,6 +119,10 @@ public final class App {
 			inputField.setButtonEnabled(true);
 			stopButton.setEnabled(false);
 
+			emailsFound.clear();
+			urlsLeft.clear();
+			inputField.reset();
+
 			webCrawler.showResults();
 		});
 		inputField.add(stopButton);
