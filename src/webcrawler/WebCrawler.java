@@ -27,7 +27,18 @@ public class WebCrawler {
 	private final static Pattern EMAIL_PATTERN 	= Pattern.compile("(([\\w\\.]+)@([\\w]+)(([\\.\\w]+))+)");
 	private final static Pattern URL_PATTERN 	= Pattern.compile("(https?://[\\w|\\d|.|/]+.[\\w|\\d|.|/]+([\\w|\\d|\\-|=]|(%[0-9&&a-f]{2}))+)");
 
+	/*
+	Using an ArrayList ADT to store the emails found while crawling.  The emails need to be stored with some semblence of order
+	to be displayed, so an ArrayList was perfect because it is ordered.  To solve the issue of storing previously found
+	emails, we check to see if the ArrayList contains the email and only push the email into the ArrayList if it is not already
+	contained.
+	*/
 	private ArrayList<String> emails = new ArrayList<>();
+	/*
+	Using and ArrayList to store the URLs that have already been visited while crawling.  In order to easily display
+	the crawled URLs it is important for the ADT used to have some sort of order, so the ArrayList is perfect for the task of
+	storing visited URLs
+	*/
 	private ArrayList<URL> urlsVisited = new ArrayList<>();
 	private Queue<URL> urlsToVisit = new ArrayDeque<>();
 	
