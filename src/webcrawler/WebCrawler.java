@@ -22,8 +22,6 @@ import java.util.regex.Pattern;
 
 /**
  * Use regular expressions to locate and log email addresses and URLs within webpages.
- * 
- * @author Ryan Smith
  */
 public class WebCrawler {
 	private final static Pattern EMAIL_PATTERN 	= Pattern.compile("(([\\w\\.]+)@([\\w]+)(([\\.\\w]+))+)");
@@ -38,7 +36,7 @@ public class WebCrawler {
 	 * 
 	 * @return 	The URL
 	 * 
-	 * @author Ryan Smith
+	 * 
 	 */
 	public static URL getValidURL(Scanner scanner) {
 		URL url = null;
@@ -68,8 +66,6 @@ public class WebCrawler {
 	 * 							index 1 is the number of new URLs found.
 	 * 
 	 * @throws 	IOException 	{@code url} can't be accessed (usually due to a 404 error)
-	 * 
-	 * @author 					Ryan Smith
 	 */
 	public int[] crawl(URL url) throws IOException {
 		Matcher matcher;
@@ -83,10 +79,12 @@ public class WebCrawler {
 			String token = websiteData.nextLine();
 
 			if ((matcher = EMAIL_PATTERN.matcher(token)).find() && !emails.contains(matcher.group())) {
+				// Match emails and save them
 				emails.add(matcher.group());
 				emailsFound++;
 			}
 			else if ((matcher = URL_PATTERN.matcher(token)).find() && !urlsToVisit.contains(URI.create(matcher.group()).toURL())) {
+				// Match URLs and save them
 				urlsToVisit.add(URI.create(matcher.group()).toURL());
 				urlsFound++;
 			}
@@ -101,10 +99,7 @@ public class WebCrawler {
 	/**
 	 * Crawl the next URL in {@code urlsToVisit}
 	 * 
-	 * @return 	An array of result data. Index 0 is the number of new emails found,
-	 * 			index 1 is the number of new URLs found.
-	 * 
-	 * @author Ryan Smith
+	 * @return 	An array of result data. Index 0 is the number of new emails found, index 1 is the number of new URLs found.
 	 */
 	public int[] crawlNext() {
 		if (urlsToVisit.isEmpty()) {
@@ -133,8 +128,6 @@ public class WebCrawler {
 	 * Return the list of emails that have currently been found
 	 * 
 	 * @return The list of emails that have currently been found
-	 * 
-	 * @author Ryan Smith
 	 */
 	public ArrayList<String> getEmails() {
 		return emails;
@@ -144,13 +137,14 @@ public class WebCrawler {
 	 * Return the list of URLs that have currently been found
 	 * 
 	 * @return The list of URLs that have currently been found
-	 * 
-	 * @author Ryan Smith
 	 */
 	public Queue<URL> getURLs() {
 		return urlsToVisit;
 	}
 
+	/**
+	 * Show the results once crawling is finished
+	 */
 	public void showResults() {
 		System.out.println("Results");
 		System.out.println("------------------------------------------------------------");
@@ -173,8 +167,6 @@ public class WebCrawler {
 
 	/**
 	 * Launch the web crawler's command-line interface
-	 * 
-	 * @author Ryan Smith
 	 */
 	public void runCLI() {
 		Scanner scanner = new Scanner(System.in);
