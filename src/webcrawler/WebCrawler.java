@@ -27,34 +27,32 @@ public class WebCrawler {
 	private final static Pattern EMAIL_PATTERN 	= Pattern.compile("(([\\w\\.]+)@([\\w]+)(([\\.\\w]+))+)");
 	private final static Pattern URL_PATTERN 	= Pattern.compile("(https?://[\\w|\\d|.|/]+.[\\w|\\d|.|/]+([\\w|\\d|\\-|=]|(%[0-9&&a-f]{2}))+)");
 
-	/*
-	Using an ArrayList ADT to store the emails found while crawling. The emails need to be stored with some semblence of order
-	to be displayed, so an ArrayList was perfect because it is ordered.  To solve the issue of storing previously found
-	emails, we check to see if the ArrayList contains the email and only push the email into the ArrayList if it is not already
-	contained.
-	*/
+	//
+	// We decided to use an ArrayList ADT to store the emails found while crawling. The emails need to be stored with some
+	// semblence of order, so an ArrayList was perfect because it is ordered. To solve the issue of storing previously found
+	// emails, we check to see if the ArrayList contains the email and only push the email into the ArrayList if it is not already
+	// contained.
+	//
 	private ArrayList<String> emails = new ArrayList<>();
-	/*
-	Using an ArrayList to store the URLs that have already been visited while crawling.  In order to easily display
-	the crawled URLs it is important for the ADT used to have some sort of order, so the ArrayList is perfect for the task of
-	storing visited URLs
-	*/
+	
+	//
+	// We decided to use an ArrayList to store the URLs that have already been visited while crawling. In order to easily display
+	// the crawled URLs, it is important for the ADT used to have some sort of order, so the ArrayList is perfect for the task of
+	// storing visited URLs.
+	//
 	private ArrayList<URL> urlsVisited = new ArrayList<>();
 	
-	/*
-	Using a queue ADT to store the URLs that need to be visited while crawling.
-	A Queue is the best choice for this case because it follows the First-In-First-Out (FIFO) principle,
-	which ensures that the URLs are visited in the order they were discovered. 
-	This prevents any potential bias or prioritization of certain URLs over others.
-	*/
+	//
+	// Using a queue ADT to store the URLs that need to be visited while crawling. A Queue is the best choice for this case because it
+	// follows the First-In-First-Out (FIFO) principle, which ensures that the URLs are visited in the order they were discovered. This
+	// prevents any potential bias or prioritization of certain URLs over others.
+	//
 	private Queue<URL> urlsToVisit = new ArrayDeque<>();
 	
 	/**
 	 * Get a valid URL as user input
 	 * 
 	 * @return 	The URL
-	 * 
-	 * 
 	 */
 	public static URL getValidURL(Scanner scanner) {
 		URL url = null;
