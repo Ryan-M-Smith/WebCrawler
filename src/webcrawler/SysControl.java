@@ -9,6 +9,9 @@ package webcrawler;
 
 import java.io.IOException;
 
+/**
+ * System control
+ */
 public final class SysControl {
 	private final static String OS 			= System.getProperty("os.name");
 	public final static boolean OS_WINDOWS 	= OS.contains("Windows");
@@ -18,8 +21,6 @@ public final class SysControl {
 	/**
 	 * Clear the console. This function invokes {@code cls} on Windows and invokes {@code clear}
 	 * on Unix-like OSes like macOS and Linux.
-	 * 
-	 * @author Ryan Smith
 	 */
 	public static void clearConsole() {
 		try {

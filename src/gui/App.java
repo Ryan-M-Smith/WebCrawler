@@ -16,6 +16,9 @@ import javax.swing.*;
 import gui.Separator.Orientation;
 import webcrawler.WebCrawler;
 
+/**
+ * The web crawler Java Swing desktop application
+ */
 public final class App {
 	private WebCrawler webCrawler;
 
