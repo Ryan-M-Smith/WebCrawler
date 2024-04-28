@@ -29,6 +29,7 @@ import javax.swing.BoxLayout;
 public class TextInputField extends JPanel {
 	private JTextField 	textField;
 	private JButton 	button;
+	private String 		tooltip;
 
 	/**
 	 * Construct a new {@code TextInputField} object
@@ -38,8 +39,10 @@ public class TextInputField extends JPanel {
 	 * @param 	defaultText 	The input component's default text 
 	 * @param 	buttonText 		The button's default text
 	 */
-	public TextInputField(int width, int height, String defaultText, String buttonText) {
-		textField = new JTextField(defaultText);
+	public TextInputField(int width, int height, String tooltip, String buttonText) {
+		this.tooltip = tooltip;
+
+		textField = new JTextField(tooltip);
 		button = new JButton(buttonText);
 
 		this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
@@ -92,6 +95,13 @@ public class TextInputField extends JPanel {
 	 */
 	public void setButtonEnabled(boolean enabled) {
 		button.setEnabled(enabled);
+	}
+
+	/**
+	 * Reset the text field
+	 */
+	public void reset() {
+		textField.setText(tooltip);
 	}
 
 } 
