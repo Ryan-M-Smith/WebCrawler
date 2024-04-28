@@ -40,21 +40,18 @@ public final class App {
 		webCrawler = new WebCrawler();
 	}
 
+	/**
+	 * Load the GUI
+	 * 
+	 * @throws 	FontFormatException 	If the font can't be loaded
+	 * @throws 	IOException 			
+	 */
 	private void loadGUI() throws FontFormatException, IOException {
 		JFrame frame = new JFrame("Web Crawler");
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		final Font ARCHIVO_REGULAR = Font.createFont(Font.TRUETYPE_FONT, new File("static/Archivo-Regular.ttf"));
-
-		// try {
-		// 	// Set System L&F
-		// 	System.out.println(Arrays.toString(UIManager.getInstalledLookAndFeels()));
-		// 	UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
-		// } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
-		// 	// handle exception
-		// 	System.out.println("Here");
-		// }
 
 		// Create a vertical layout within the window
 		JPanel panel = new JPanel();
@@ -112,6 +109,18 @@ public final class App {
 		inputField.add(nextURLButton);
 		nextURLButton.setEnabled(false);
 
+		// Add a button to stop crawling
+		JButton stopButton = new JButton("Stop Crawling");
+		stopButton.addActionListener(event -> {
+			nextURLButton.setEnabled(false);
+			inputField.setButtonEnabled(true);
+			stopButton.setEnabled(false);
+
+			webCrawler.showResults();
+		});
+		inputField.add(stopButton);
+		stopButton.setEnabled(false);
+
 		inputField.onClick(event -> {
 			try {
 				URL url = readURL(inputField);
@@ -132,6 +141,7 @@ public final class App {
 			urlsLeft.display(webCrawler.getURLs());
 
 			nextURLButton.setEnabled(true);
+			stopButton.setEnabled(true);
 			inputField.setButtonEnabled(false);
 		});
 
@@ -149,6 +159,16 @@ public final class App {
 		frame.setVisible(true);
 	}
 
+	/**
+	 * Read a URL from the input field
+	 * 
+	 * @param 	inputField 	The input field to read from
+	 * @return 				The URL read
+	 * 
+	 * @throws URISyntaxException
+	 * @throws MalformedURLException
+	 * @throws IllegalArgumentException
+	 */
 	private static URL readURL(TextInputField inputField) throws URISyntaxException, MalformedURLException, IllegalArgumentException {
 		String urlString = inputField.getText();
 		URL url = new URI(urlString).toURL();
@@ -157,8 +177,6 @@ public final class App {
 
 	/**
 	 * Launch the application.
-	 * 
-	 * @author Ryan Smith
 	 */
 	public void launch() {
 		SwingUtilities.invokeLater(new Runnable() {
